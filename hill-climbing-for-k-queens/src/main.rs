@@ -1,5 +1,6 @@
 extern crate rand;
 use rand::Rng;
+use std::convert::TryInto;
 
 struct Queens {
     queens: Vec<u32>,
@@ -17,6 +18,20 @@ impl Queens {
         }
 
         return Queens { queens: my_board };
+    }
+    fn to_board(&self) -> Board {
+        let mut board = Vec::new();
+        for queen in &self.queens {
+            let mut inner_queen = Vec::new();
+            let mut index = 0u32;
+            for i in 0..self.queens.len() {
+                inner_queen.push(queen == &index);
+                println!("{} - {}", queen, &index);
+                index += 1;
+            }
+            board.push(inner_queen);
+        }
+        return Board { board: board };
     }
 }
 
@@ -38,4 +53,5 @@ impl Board {
 fn main() {
     let _n = 8i32;
     println!("Input amount of queen");
+    Queens::generate_queens(8).to_board().print();
 }
