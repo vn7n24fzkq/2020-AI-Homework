@@ -1,8 +1,9 @@
 extern crate rand;
+
 use rand::Rng;
 use std::convert::TryInto;
 use std::io;
-use std::time::{Duration, Instant};
+use std::time::Instant;
 
 struct Queens {
     queens: Vec<i32>,
@@ -41,7 +42,7 @@ impl Board {
         for v1 in &self.board {
             for &b in v1 {
                 if b {
-                    print!("O");
+                    print!("\x1B[32m{}\x1B[0m", "O");
                 } else {
                     print!("X");
                 }
