@@ -2,6 +2,7 @@ extern crate rand;
 use rand::Rng;
 use std::convert::TryInto;
 use std::io;
+use std::time::{Duration, Instant};
 
 struct Queens {
     queens: Vec<i32>,
@@ -119,5 +120,7 @@ fn main() {
     let mut input = String::new();
     io::stdin().read_line(&mut input).unwrap();
     let _n: i32 = input.trim().parse().unwrap();
+    let now = Instant::now();
     run(_n);
+    println!("spend : {}ms", now.elapsed().as_millis());
 }
