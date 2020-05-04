@@ -1,6 +1,5 @@
 extern crate rand;
 use rand::Rng;
-use std::convert::TryInto;
 
 struct Queens {
     queens: Vec<u32>,
@@ -13,7 +12,7 @@ struct Board {
 impl Queens {
     fn generate_queens(queen_size: u32) -> Queens {
         let mut my_board = Vec::new();
-        for i in 0..queen_size {
+        for _i in 0..queen_size {
             my_board.push(rand::thread_rng().gen_range(0, queen_size));
         }
 
@@ -24,9 +23,8 @@ impl Queens {
         for queen in &self.queens {
             let mut inner_queen = Vec::new();
             let mut index = 0u32;
-            for i in 0..self.queens.len() {
+            for _i in 0..self.queens.len() {
                 inner_queen.push(queen == &index);
-                println!("{} - {}", queen, &index);
                 index += 1;
             }
             board.push(inner_queen);
@@ -39,7 +37,7 @@ impl Board {
     fn print(&self) {
         for v1 in &self.board {
             for &b in v1 {
-                if (b) {
+                if b {
                     print!("O");
                 } else {
                     print!("X");
@@ -50,6 +48,16 @@ impl Board {
     }
 }
 
+struct hill_climbing {
+    board: Board,
+}
+
+impl hill_climbing {
+    fn run(&self, size: u32) {}
+    fn next_state(&self) {}
+    fn get_new_board(&self) {}
+    fn getHeuristiCost(board: Board) -> u32 {}
+}
 fn main() {
     let _n = 8i32;
     println!("Input amount of queen");
