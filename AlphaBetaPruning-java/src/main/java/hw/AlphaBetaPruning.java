@@ -101,7 +101,7 @@ class AlphaBetaTree {
                         if(currentNode.childs[j].alpha!=null)
                             System.out.print( currentNode.childs[j].alpha + ",");
                         else
-                            System.out.print(value);
+                            System.out.print(value + ",");
                         cut++;
                     }
                     break;
